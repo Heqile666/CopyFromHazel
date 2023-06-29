@@ -61,6 +61,7 @@ project "Hazel"
 	
 		postbuildcommands {
 			
+			--first time maybe lost ddl ,so you need to click run button twice times
 			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
 		}
 	
