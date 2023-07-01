@@ -10,8 +10,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Hazel/vendor/GLFW/include"
+IncludeDir["Glad"] = "Hazel/vendor/Glad/include"
+IncludeDir["ImGui"] = "Hazel/vendor/ImGui"
 
 include "Hazel/vendor/GLFW"
+include "Hazel/vendor/Glad"
+include "Hazel/vendor/ImGui"
 
 -- 项目 Hazel
 project "Hazel"
@@ -39,11 +43,15 @@ project "Hazel"
 		-- 日志库 spdlog
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}",
 	}
 	
 	links
 	{
 		"GLFW",
+		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 	
@@ -57,7 +65,10 @@ project "Hazel"
 		systemversion "latest"
 		-- 宏定义
 		defines {
-			"HZ_BUILD_DLL", "HZ_PLATFORM_WINDOWS", "_WINDLL"
+			"HZ_BUILD_DLL", 
+			"HZ_PLATFORM_WINDOWS", 
+			"_WINDLL",
+			"GLFW_INCLUDE_NONE",
 		}
 		-- 构建后置操作指令集
 		postbuildcommands {
