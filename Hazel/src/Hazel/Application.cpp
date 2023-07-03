@@ -3,8 +3,9 @@
 #include "Application.h"
 
 #include "Hazel/Log.h"
+#include <glad/glad.h>
 
-#include <GLFW/glfw3.h>
+
 
 namespace Hazel
 {
@@ -54,10 +55,14 @@ namespace Hazel
 	{
 		while (m_Running)
 		{
+			glClearColor(0, 0, 0, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+			
 			for (Layer* layer : m_LayerStack) // ÕýÏòµü´ú
 			{
 				layer->OnUpdate();
 			}
+			
 			m_Window->OnUpdate();
 		}
 	}
