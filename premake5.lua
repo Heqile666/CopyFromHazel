@@ -12,6 +12,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Hazel/vendor/GLFW/include"
 IncludeDir["Glad"] = "Hazel/vendor/Glad/include"
 IncludeDir["ImGui"] = "Hazel/vendor/ImGui"
+IncludeDir["glm"] = "Hazel/vendor/glm"
 
 include "Hazel/vendor/GLFW"
 include "Hazel/vendor/Glad"
@@ -35,7 +36,16 @@ project "Hazel"
 	pchsource "Hazel/src/hzpch.cpp"
 
 	-- 包含文件 ** 递归搜索标记
-	files {"%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp"}
+	files {
+	"%{prj.name}/src/**.h",
+
+	"%{prj.name}/src/**.cpp",
+
+	"%{prj.name}/vendor/glm/glm/**.hpp",
+
+	"%{prj.name}/vendor/glm/glm/**.inl"
+
+	}
 	-- 包含路径
 	includedirs {
 		-- Hazel核心目录, 加入包含目录, 方便使用
@@ -45,6 +55,7 @@ project "Hazel"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 	
 	links
@@ -106,7 +117,8 @@ project "Sandbox"
 	files {"%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp"}
 	includedirs {
 		"Hazel/vendor/spdlog/include",
-		"Hazel/src"
+		"Hazel/src",
+		"%{IncludeDir.glm}"
 	}
 	-- 链接
 	links {"Hazel"}
