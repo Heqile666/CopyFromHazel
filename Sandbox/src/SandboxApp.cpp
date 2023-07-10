@@ -23,7 +23,6 @@ public:
 
 	void OnUpdate() override
 	{
-		
 		if (Hazel::Input::IsKeyPressed(HZ_KEY_TAB)) {
 			HZ_INFO("Tap Key is pressed");
 		}
