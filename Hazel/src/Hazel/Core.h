@@ -4,15 +4,18 @@
 #if HZ_DYNAMIC_LINK
 	#ifdef HZ_BUILD_DLL
 		#define HAZEL_API __declspec(dllexport)
-	#else 
+	#else
 		#define HAZEL_API __declspec(dllimport)
-	#endif // HZ_BUILD_DLL
-#else 
-	#define HAZEL_API
-
+	#endif
+#else
+    #define HAZEL_API
 #endif
-#else 
+#else
 	#error Hazel only supports Windows!
+#endif
+
+#ifdef HZ_DEBUG
+	#define HZ_ENABLE_ASSERTS
 #endif
 
 #ifdef HZ_ENABLE_ASSERTS
@@ -22,7 +25,6 @@
 	#define HZ_ASSERT(x, ...)
 	#define HZ_CORE_ASSERT(x, ...)
 #endif
-
 
 #define BIT(x) (1 << x)
 
