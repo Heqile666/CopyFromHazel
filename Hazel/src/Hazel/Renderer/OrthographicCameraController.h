@@ -1,5 +1,5 @@
 #pragma once
-#include "Renderer/OrthographicCamera.h"
+#include "Hazel/Renderer/OrthographicCamera.h"
 #include "Hazel/Core/Timestep.h"
 #include "Hazel/Events/Event.h"
 #include "Hazel/Events/ApplicationEvent.h"
@@ -30,7 +30,5 @@ namespace Hazel {
 		float m_CameraTranslationSpeed = 1.0f;
 		float m_CameraRotationSpeed = 1.0f;
 
-
 	};
-
 }
