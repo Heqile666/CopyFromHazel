@@ -1,7 +1,7 @@
 #include "hzpch.h"
 #include "Application.h"
 
-#include "Hazel/Log.h"
+#include "Hazel/Core/Log.h"
 
 #include <glad/glad.h>
 
@@ -9,6 +9,7 @@
 #include "Hazel/Renderer/Renderer.h"
 
 #include <glfw/glfw3.h>
+#include "Hazel/Renderer/Renderer2D.h"
 
 namespace Hazel {
 
@@ -24,6 +25,7 @@ namespace Hazel {
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 		Renderer::Init();
+		Renderer2D::Init();
 		m_Window->SetVSync(false);
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
